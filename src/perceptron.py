@@ -50,7 +50,7 @@ def main(inp="labelList.txt"):
       labelList.append(float(line))
   print()
 
-  input = get_user_tweets()
+  input = get_user_tweets('Hand_label')
   for user in input:
     tempList = []
     for tweet in user:

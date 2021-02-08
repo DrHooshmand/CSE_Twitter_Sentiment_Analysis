@@ -1,6 +1,8 @@
 import tweepy
 import numpy as np
 from dicgen import *
+import sys
+sys.path.insert(1, '../')
 
 '''
 Script for downloading tweets from tweepy API
@@ -44,10 +46,10 @@ def get_tweets(username):
     return(tmp) 
 
 # Function to extract tweets for usernames in a file
-def get_user_tweets():
+def get_user_tweets(hand_label):
     usertweets=[]
     tag=[]
-    with open('hand_label_ov') as f:
+    with open(hand_label) as f:
         for username in f:
             tag.append(username.split()[2])
             user = username.split()[1]
@@ -55,7 +57,8 @@ def get_user_tweets():
             usertweets.append( (user, get_tweets(user) ) )
     return usertweets, tag
 
-usertweets , tag = get_user_tweets()
+
+usertweets , tag = get_user_tweets("../data/Hand_label")
 
 # def gen_feature (user_arr):
 #     feature = []
